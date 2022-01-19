@@ -1,0 +1,18 @@
+how pygame work in the conceptual level 
+    -every pygame consiste of 2 parts
+    -part 1, where you set up all the code you need for the game that is game logic
+    -part 2, is the loop for runing the game. inside the loop pygame continuously cycle 
+through a while loop updates the code and raw the resulting pictures and since that happens
+many times pers second we perciev this as a moving image
+
+setup part
+-----------
+1) create a rectangule
+2) set the starting posion and movent speed
+
+loop
+-----------
+1) function to make the rectangule move to the right by the movenment speend once per loop cycle
+
+-------------------------------------------set by step -------------------------------
+    -create a set up
