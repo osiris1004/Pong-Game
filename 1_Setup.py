@@ -18,11 +18,41 @@ clock = pygame.time.Clock()
 # Setting up the main window
 screen_width = 1280 #pixel wide
 screen_height = 960 #pixel hight
-#--display.set_mode((screen_width,screen_height))-- return a display surface object
+#--display.set_mode((screen_width,screen_height))-- return a display surface object or your window
 screen = pygame.display.set_mode((screen_width,screen_height))
 
 #--pygame.display.set_caption('Pong')-- given the window or sreen a title
 pygame.display.set_caption('Pong')
+
+
+
+#----------------------------------Drawing phase----------------------------------
+
+# Colors
+light_grey = (200,200,200)
+bg_color = pygame.Color('grey12')
+
+# Game Rectangles
+#pygame.Rect(x(lesft),y(top),width,height)
+					
+			#- ...					
+			#-2
+			#-1
+#-..,-2,-1,0,1,2,..-----------------#
+			#1  		|  			|
+			#2			|			|
+			#3----------0-----------| 	
+			#4  		| 0 		|
+			#5  		|  			|
+			#6----------------------# 
+ball = pygame.Rect(screen_width/2-15,screen_height/2-15, 30, 30)
+player = pygame.Rect(screen_width-10, screen_height / 2-70 , 10,140)
+opponent = pygame.Rect(10, screen_height / 2 - 70, 10,140)
+
+
+#----------------------------------End Drawing phase End----------------------------------
+
+
 
 while True:
 	#Handling input
@@ -34,13 +64,31 @@ while True:
 			# call pygame.quit() before they call sys.exit() to terminate the program.
 			pygame.quit()
 			sys.exit()
+
+	#----------------------------------End Drawing phase End----------------------------------
+
+	# Visuals 
+	screen.fill(bg_color)
+	pygame.draw.rect(screen, light_grey, player)
+	#pygame.draw.rect(screen, light_grey, opponent)
+	pygame.draw.ellipse(screen, light_grey, ball)
+	pygame.draw.aaline(screen, light_grey, (screen_width / 2, 0),(screen_width / 2, screen_height))
 	
+	
+
+	#----------------------------------End Drawing phase End----------------------------------
+
+
+
+
 	# Updating the window 
 	#--pygame.display.flip()--Update the full display Surface to the screen
 	pygame.display.flip()
 
 	#FPS, Frames Per Second, is the number of frames shown per unit of time.
-	#1 / FPS is the amount of time should pass between each frame.
-	#Tick is just a measure of time in PyGame.
-	#clock.tick(40) means that for every second at most 40 frames should pass.
+	# 1 / FPS is the amount of time should pass between each frame.
+	# Tick is just a measure of time in PyGame.
+	# clock.tick(40) means that 40 frames should pass (for every second at most) per second
+	# NBthe .clock.tick(60) limite how fast our loop runs. important because the computer
+	# will try to run the code as fast as it can and hence we may not see the anything
 	clock.tick(60)

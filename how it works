@@ -15,4 +15,11 @@ loop
 1) function to make the rectangule move to the right by the movenment speend once per loop cycle
 
 -------------------------------------------set by step -------------------------------
-    -create a set up
+    1 create setup module
+    2 Drawing on our window
+            befor drawing you need to understand the highranking of 4 diffrent concept
+            --display surface. this is what we drawn and we can only have one.
+                --regular sueface. a lay that hold materials in order to keep your game organise. this
+                  unlike most be need in the display surface. NB we can have many regular surfaces
+                --rectangular surface. it is use to encapsulate shapes and regular surfaces
+                    which make them more easier to manipulate and measure them 
