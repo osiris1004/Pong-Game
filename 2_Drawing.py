@@ -29,7 +29,9 @@ pygame.display.set_caption('Pong')
 #----------------------------------Drawing phase----------------------------------
 
 # Colors
+# defind your on color as (R,G,B)
 light_grey = (200,200,200)
+#--pygame.Color('colorNameOnline ')-- use to create color
 bg_color = pygame.Color('grey12')
 
 # Game Rectangles
@@ -68,11 +70,18 @@ while True:
 	#----------------------------------End Drawing phase End----------------------------------
 
 	# Visuals 
+	#--screen.fill(VariavleColor)--add background color
 	screen.fill(bg_color)
+	#--display surface. the parent surface and we can only have one.
+	#---pygame.draw.OBJECT(display surface, color, rect)--- use to display itmes on your parent surface 
 	pygame.draw.rect(screen, light_grey, player)
-	#pygame.draw.rect(screen, light_grey, opponent)
+	pygame.draw.rect(screen, light_grey, opponent) 
 	pygame.draw.ellipse(screen, light_grey, ball)
+
+	#aaline(surface, color, start_pos, end_pos)
+	#aaline(surface, color, (x,y), (x,y))
 	pygame.draw.aaline(screen, light_grey, (screen_width / 2, 0),(screen_width / 2, screen_height))
+	pygame.draw.aaline(screen, light_grey, (0,screen_height/2),(screen_width , screen_height/2))
 	
 	
 
