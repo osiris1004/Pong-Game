@@ -50,3 +50,9 @@ loop
                 a button has been released : stop moving
 
     
+reset logic 
+ onec the ball hit either the left or right wall
+    return ball in center
+    restart in a random direction 
+mofify the statement  when ball hit either the left or right wall
+            replace the line which resver the ball with the function that will perform reset logic

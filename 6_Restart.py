@@ -1,5 +1,5 @@
 #sys is a modul to acces some functionality in your system
-import pygame, sys
+import pygame, sys, random
 
 #----------------------------------Animation phase----------------------------------
 
@@ -18,10 +18,14 @@ def ball_animation():
 		ball_speed_y *= -1
 	if ball.left <= 0 or ball.right >= screen_width:
 		#reverse the horizontal ball speed hence ball_speed_x = -7
-		ball_speed_x *= -1
+		#ball_speed_x *= -1
+		#----------------------------------Resart ball phase----------------------------------
+		ball_start()
+		#----------------------------------Resart ball phase----------------------------------
 		# --Rec1.colliderect(Rec2) --Returns true if any portion of either rectangle(rec1 and rec2) overlap or touches them self
 	if ball.colliderect(player) or ball.colliderect(opponent):
 		ball_speed_x *= -1
+		
 #----------------------------------Animation phase----------------------------------
 
 #----------------------------------Input phase----------------------------------
@@ -58,6 +62,17 @@ def opponent_ai():
 	if opponent.bottom >= screen_height:
 		opponent.bottom = screen_height		
 #----------------------------------Opponont phase----------------------------------
+
+#----------------------------------Resart ball phase----------------------------------
+def ball_start():
+	global ball_speed_x, ball_speed_y
+
+	#make ball appriear in center
+	ball.center = (screen_width/2, screen_height/2)
+	#The choice() method returns a randomly selected element from string, a range, a list, a tuple etc
+	ball_speed_y *= random.choice((1,-1))
+	ball_speed_x *= random.choice((1,-1))
+#----------------------------------Resart ball phase----------------------------------	
 
 # General setup
 #--pygame.init()-- initiate the pygame module. all ways need for any pygame code
