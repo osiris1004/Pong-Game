@@ -4,6 +4,7 @@ import pygame, sys
 # General setup
 #--pygame.init()-- initiate the pygame module. all ways need for any pygame code
 pygame.init()
+
 #--pygame.time.Clock()--This function is used to create a clock object which can be used to keep track of time. 
 #---------The various methods of clock object are below:----------
 #tick():This method should be called once per frame. It will compute how many milliseconds have passed since the
@@ -25,12 +26,21 @@ pygame.display.set_caption('Pong')
 
 while True:
 	#Handling input
-	#--pygame.event.get()--get events from the queue
+	#--pygame.event.get()--get events from the queue. NB it return a list
 	for event in pygame.event.get():
+		#--pygame.QUIT--checks if the Event object’s type is equal to the constant QUIT
 		if event.type == pygame.QUIT:
+			#--pygame.quit()--deactivates the Pygame library. Your programs should always 
+			# call pygame.quit() before they call sys.exit() to terminate the program.
 			pygame.quit()
 			sys.exit()
 	
 	# Updating the window 
+	#--pygame.display.flip()--Update the full display Surface to the screen
 	pygame.display.flip()
+
+	#FPS, Frames Per Second, is the number of frames shown per unit of time.
+	#1 / FPS is the amount of time should pass between each frame.
+	#Tick is just a measure of time in PyGame.
+	#clock.tick(40) means that for every second at most 40 frames should pass.
 	clock.tick(60)
