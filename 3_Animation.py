@@ -4,7 +4,24 @@ import pygame, sys
 #----------------------------------Animation phase----------------------------------
 
 def ball_animation():
+	#global enable us to acces glopbal scope 
+	global ball_speed_x, ball_speed_y
 	
+	# moving the ball every frame  by the ball spped we defind x=7 and y=7
+	# NB ball.x where x is the object ball = pygame.Rect(screen_width/2-15,screen_height/2-15, 30, 30)
+	ball.x += ball_speed_x
+	ball.y += ball_speed_y
+
+	# crate a boundry 
+	if ball.top <= 0 or ball.bottom >= screen_height:
+		#reverse the horizontal ball speed hence ball_speed_y = -7
+		ball_speed_y *= -1
+	if ball.left <= 0 or ball.right >= screen_width:
+		#reverse the horizontal ball speed hence ball_speed_x = -7
+		ball_speed_x *= -1
+		# --Rec1.colliderect(Rec2) --Returns true if any portion of either rectangle(rec1 and rec2) overlap or touches them self
+	if ball.colliderect(player) or ball.colliderect(opponent):
+		ball_speed_x *= -1
 #----------------------------------Animation phase----------------------------------		
 
 
