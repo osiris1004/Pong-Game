@@ -1,6 +1,13 @@
 #sys is a modul to acces some functionality in your system
 import pygame, sys
 
+#----------------------------------Animation phase----------------------------------
+
+def ball_animation():
+	
+#----------------------------------Animation phase----------------------------------		
+
+
 # General setup
 #--pygame.init()-- initiate the pygame module. all ways need for any pygame code
 pygame.init()
@@ -31,6 +38,14 @@ pygame.display.set_caption('Pong')
 # Colors
 # defind your on color as (R,G,B)
 light_grey = (200,200,200)
+
+	#----------------------------------Animation phase----------------------------------
+	# defind speed variable
+		# Game Variables
+ball_speed_x = 7
+ball_speed_y = 7
+	#----------------------------------Animation phase----------------------------------
+
 #--pygame.Color('colorNameOnline ')-- use to create color
 bg_color = pygame.Color('grey12')
 
@@ -66,6 +81,10 @@ while True:
 			# call pygame.quit() before they call sys.exit() to terminate the program.
 			pygame.quit()
 			sys.exit()
+			#----------------------------------Animation phase----------------------------------
+	# Game logic
+	ball_animation()
+			#----------------------------------Animation phase----------------------------------
 
 	#----------------------------------End Drawing phase End----------------------------------
 
