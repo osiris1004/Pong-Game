@@ -56,3 +56,13 @@ reset logic
     restart in a random direction 
 mofify the statement  when ball hit either the left or right wall
             replace the line which resver the ball with the function that will perform reset logic
+
+
+------------ how my scores workes
+a variable to store scores
+text to dispaly scores
+
+steps in displaying text in pygame
+    1; create a font and a font size
+    2; write text on surface 
+    3; Put the text sirface on the main surface                

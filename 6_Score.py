@@ -5,22 +5,28 @@ import pygame, sys, random
 
 def ball_animation():
 	#global enable us to acces glopbal scope 
-	global ball_speed_x, ball_speed_y
+	global ball_speed_x, ball_speed_y, player_score, opponent_score
 	
 	# moving the ball every frame  by the ball spped we defind x=7 and y=7
 	# NB ball.x where x is the object ball = pygame.Rect(screen_width/2-15,screen_height/2-15, 30, 30)
 	ball.x += ball_speed_x
 	ball.y += ball_speed_y
 
+
 	# crate a boundry 
 	if ball.top <= 0 or ball.bottom >= screen_height:
 		#reverse the horizontal ball speed hence ball_speed_y = -7
 		ball_speed_y *= -1
-	if ball.left <= 0 or ball.right >= screen_width:
-		#reverse the horizontal ball speed hence ball_speed_x = -7
-		#ball_speed_x *= -1
+	if ball.left <= 0:
+		#gold
+		player_score += 1
+		ball_start()
+	if ball.right >= screen_width:
+		#gold 
+		
 		#----------------------------------Resart ball phase----------------------------------
 		ball_start()
+		opponent_score += 1
 		#----------------------------------Resart ball phase----------------------------------
 		# --Rec1.colliderect(Rec2) --Returns true if any portion of either rectangle(rec1 and rec2) overlap or touches them self
 	if ball.colliderect(player) or ball.colliderect(opponent):
@@ -122,6 +128,13 @@ player_speed = 0
 opponent_speed = 7
 	#----------------------------------Opponont phase----------------------------------
 
+	#----------------------------------Text phase----------------------------------
+	#text variable
+player_score = 0
+opponent_score = 0
+game_font = pygame.font.Font("freesansbold.ttf",40)
+	#----------------------------------text phase----------------------------------
+
 #--pygame.Color('colorNameOnline ')-- use to create color
 bg_color = pygame.Color('grey12')
 
@@ -208,6 +221,12 @@ while True:
 	pygame.draw.aaline(screen, light_grey, (screen_width / 2, 0),(screen_width / 2, screen_height))
 	pygame.draw.aaline(screen, light_grey, (0,screen_height/2),(screen_width , screen_height/2))
 	
+	#surface text 
+	player_text = game_font.render(f"{player_score}",False,light_grey)
+	screen.blit(player_text,(660,470))
+
+	opponent_text = game_font.render(f"{opponent_score}",False,light_grey)
+	screen.blit(opponent_text,(600,470))
 	
 
 	#----------------------------------End Drawing phase End----------------------------------
@@ -226,3 +245,8 @@ while True:
 	# NBthe .clock.tick(60) limite how fast our loop runs. important because the computer
 	# will try to run the code as fast as it can and hence we may not see the anything
 	clock.tick(60)
+
+
+
+
+
