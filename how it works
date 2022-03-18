@@ -41,3 +41,11 @@ loop
             pygame.draw.rect(screen, light_grey, opponent) 
             pygame.draw.ellipse(screen, light_grey, ball)
 
+    4 inputed 
+            up arrow = move player up (make use of handlers)
+                a button has been pressed : start moving 
+                a button has been released : stop moving 
+            down arrow = down player down (make use of handlers)
+                a button has been pressed : start moving 
+                a button has been released : stop moving
+

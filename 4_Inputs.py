@@ -22,7 +22,22 @@ def ball_animation():
 		# --Rec1.colliderect(Rec2) --Returns true if any portion of either rectangle(rec1 and rec2) overlap or touches them self
 	if ball.colliderect(player) or ball.colliderect(opponent):
 		ball_speed_x *= -1
-#----------------------------------Animation phase----------------------------------		
+#----------------------------------Animation phase----------------------------------
+
+#----------------------------------Input phase----------------------------------
+def player_animation():
+	player.y += player_speed
+
+	#the logic below avoid the player to move out side of the window or the surface
+	# if the player top is less than zero, place the player top at position zero
+	if player.top <= 0:
+		player.top = 0
+
+	# if the player bottom is greather sceen hight, place the player bottom at position sceen hight	
+	if player.bottom >= screen_height:
+		player.bottom = screen_height
+		
+#----------------------------------Input phase----------------------------------		
 
 
 # General setup
@@ -57,11 +72,17 @@ pygame.display.set_caption('Pong')
 light_grey = (200,200,200)
 
 	#----------------------------------Animation phase----------------------------------
-	# defind speed variable
+	# defind speed variable require for the movent of the ball
 		# Game Variables
 ball_speed_x = 7
 ball_speed_y = 7
 	#----------------------------------Animation phase----------------------------------
+
+	#----------------------------------input phase----------------------------------
+	# defind speed variable require for the movent of players
+player_speed = 0	
+player_speed = 0
+	#----------------------------------input phase----------------------------------
 
 #--pygame.Color('colorNameOnline ')-- use to create color
 bg_color = pygame.Color('grey12')
@@ -98,10 +119,39 @@ while True:
 			# call pygame.quit() before they call sys.exit() to terminate the program.
 			pygame.quit()
 			sys.exit()
-			#----------------------------------Animation phase----------------------------------
+			#----------------------------------Input phase----------------------------------
+			#--pygame.KEYDOWN-- checks if any key is pressed 
+		if event.type == pygame.KEYDOWN:
+			#--pygame.KEYDOWN-- checks a specific key
+			#--event.key-- store the key you pressed 
+			#--pygame.K_UP:-- is upkey
+			if event.key == pygame.K_UP:
+				#NB you cant do this player.y+=7 here, because pygame checks if the button changes it state
+				#from unpressed to pressed. so if you keep it push down it will not trigger
+				# the event. you will need to continously press the button to move in tiny
+				#steps which would not be fun. to solve it here is the steps
+				# - declaire your varible , speed varivle
+				# - add this speed to the player on every single cylele of the loop
+				# - if no button is pressed, 
+				# - how ever whe the up or the down key is pressed
+				#player_speed -= 10 this variable is zero the variable becomes +ive or -ive
+				player_speed -= 10
+			if event.key == pygame.K_DOWN:
+				#player_speed += 10
+				player_speed += 10
+
+			#--pygame.KEYUp-- checks if any key is release
+		if event.type == pygame.KEYUP:
+			if event.key == pygame.K_UP:
+				player_speed += 10
+			if event.key == pygame.K_DOWN:
+				player_speed -= 10	
+			#----------------------------------Input phase----------------------------------
+			
 	# Game logic
 	ball_animation()
-			#----------------------------------Animation phase----------------------------------
+	player_animation()
+			
 
 	#----------------------------------End Drawing phase End----------------------------------
 
