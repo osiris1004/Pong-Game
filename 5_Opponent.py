@@ -37,8 +37,27 @@ def player_animation():
 	if player.bottom >= screen_height:
 		player.bottom = screen_height
 		
-#----------------------------------Input phase----------------------------------		
+#----------------------------------Input phase----------------------------------
 
+
+#----------------------------------Opponont phase----------------------------------
+def opponent_ai():
+	 #5 opponent logic
+     #if the opponent top is above the center of the ball  : move the oppenet down
+     #if the bottom opponent the opponent is below the center of the ball : move the component up
+    #the speed of the opponent will be use to determine the difficulty   
+
+	if opponent.top < ball.y:
+		opponent.y += opponent_speed
+	if opponent.bottom > ball.y:
+		opponent.y -= opponent_speed
+
+	#5 opponent logic to void it to go out from the window
+	if opponent.top <= 0:
+		opponent.top = 0
+	if opponent.bottom >= screen_height:
+		opponent.bottom = screen_height		
+#----------------------------------Opponont phase----------------------------------
 
 # General setup
 #--pygame.init()-- initiate the pygame module. all ways need for any pygame code
@@ -83,6 +102,10 @@ ball_speed_y = 7
 player_speed = 0	
 player_speed = 0
 	#----------------------------------input phase----------------------------------
+    #----------------------------------Opponont phase----------------------------------
+	# defind speed variable require for the opponent movent speed
+opponent_speed = 7
+	#----------------------------------Opponont phase----------------------------------
 
 #--pygame.Color('colorNameOnline ')-- use to create color
 bg_color = pygame.Color('grey12')
@@ -151,6 +174,7 @@ while True:
 	# Game logic
 	ball_animation()
 	player_animation()
+	opponent_ai()
 			
 
 	#----------------------------------End Drawing phase End----------------------------------
