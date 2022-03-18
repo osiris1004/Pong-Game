@@ -23,3 +23,21 @@ loop
                   unlike most be need in the display surface. NB we can have many regular surfaces
                 --rectangular surface. it is use to encapsulate shapes and regular surfaces
                     which make them more easier to manipulate and measure them 
+
+    3 performe animations 
+        to do it you need to add a step between define rectangles and draw rectangule as shown below
+        -Define rectangles
+            ball = pygame.Rect(screen_width/2-15,screen_height/2-15, 30, 30)
+            player = pygame.Rect(screen_width-10, screen_height / 2-70 , 10,140)
+            opponent = pygame.Rect(10, screen_height / 2 - 70, 10,140)
+
+            -----------------------Animation step---------------------------------
+            make change by moving the numer of coordinate by adding the number of pixel every cycle of the loop
+            and for that purpose the rectangles are very useful
+            -------------------------------------------------------
+         
+        -Draw rectangles
+            pygame.draw.rect(screen, light_grey, player)
+            pygame.draw.rect(screen, light_grey, opponent) 
+            pygame.draw.ellipse(screen, light_grey, ball)
+
